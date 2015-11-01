@@ -39,7 +39,13 @@ Then re-run
         git add BankingAccount-1.0-SNAPSHOT.jar
         git add FriendsMean-1.0-SNAPSHOT.jar
         git commit -m "Add .jar"
+```
+We initialize a kerboros ticket and launch the jar file.
+```
         kinit
+        export JAVA_HOME=/usr/java/default
+        export PATH=${JAVA_HOME}/bin:${PATH}
+        export HADOOP_CLASSPATH=${JAVA_HOME}/lib/tools.jar
         hadoop jar BankingAccount-1.0-SNAPSHOT.jar org.bigdata.tp1_2.BankAccount /res/mapred_assignment /home/amorel/output
 ```
 When we launch that, we don't have any result. 
