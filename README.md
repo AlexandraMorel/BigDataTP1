@@ -1,10 +1,11 @@
 # Bash command
 
 ## Maven on local machine:
+```
         mvn archetype:generate -DarchetypeArtifactId=maven-archetype-quickstart -DgroupId=org.bigdata.tp1_2 -DartifactId=BankingAccount -DinteractiveMode=false
-
         cd ./Users/alexandra/BankingAccount
         mvn eclipse:eclipse
+```
 
 Add to POM.xml:
 ```xml
@@ -16,12 +17,15 @@ Add to POM.xml:
 ```
 
 Then re-run
+```
         mvn eclipse:eclipse
         mvn jar:jar (create the snapshot we will import on the server)
+```
 
 > Same commands for FriendsMean
 
 ## Git Bash:
+```
         scp ./Users/alexandra/BankingAccount/target/BankingAccount-1.0-SNAPSHOT.jar amorel@haddop-ece.tk:/home/amorel/BigDataTP1 (import the file on the server)
         ssh amorel@hadoop-ece.tk
         mkdir ./BigDataTP1
@@ -37,7 +41,7 @@ Then re-run
         git commit -m "Add .jar"
         kinit
         hadoop jar BankingAccount-1.0-SNAPSHOT.jar org.bigdata.tp1_2.BankAccount /res/mapred_assignment /home/amorel/output
-        
+```
 
 Problem when we try to put files of the git on the Github: 
 ```
