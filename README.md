@@ -46,3 +46,7 @@
 ```
 > We obtain "Permission denied (publickey)."
 > So we copy files from the server and add them to this Github manually.
+
+### II. Practice 1
+Question
+> 
