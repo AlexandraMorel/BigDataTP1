@@ -28,7 +28,8 @@ Then re-run
 
 ### Git Bash:
 ```
-        scp ./Users/alexandra/BankingAccount/target/BankingAccount-1.0-SNAPSHOT.jar amorel@haddop-ece.tk:/home/amorel/BigDataTP1 (import the file on the server)
+        scp ./Users/alexandra/BankingAccount/target/BankingAccount-1.0-SNAPSHOT.jar amorel@haddop-ece.tk:/home/amorel/BigDataTP1 
+        scp ./Users/alexandra/FriendsMean/target/FriendsMean-1.0-SNAPSHOT.jar amorel@haddop-ece.tk:/home/amorel/BigDataTP1 
         ssh amorel@hadoop-ece.tk
         mkdir ./BigDataTP1
         cd ./BigDataTP1
