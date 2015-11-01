@@ -38,8 +38,10 @@
         kinit
         hadoop jar BankingAccount-1.0-SNAPSHOT.jar org.bigdata.tp1_2.BankAccount /res/mapred_assignment /home/amorel/output
 
-Problem when we try: 
+> Problem when we try: 
+```
         git remote add origin git@github.com:AlexandraMorel/BigDataTP1.git
         git push origin master
+```
 > We obtain "Permission denied (publickey)."
 > So we copy files from the server and add them to this Github manually.
