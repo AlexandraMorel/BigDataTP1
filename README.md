@@ -19,7 +19,7 @@ Add to POM.xml:
 Then re-run
 ```
         mvn eclipse:eclipse
-        mvn jar:jar (create the snapshot we will import on the server)
+        mvn jar:jar
 ```
 
 > Same commands for FriendsMean
