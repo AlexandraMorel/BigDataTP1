@@ -1,6 +1,3 @@
-# BigDataTP1
-First assignment
-
 # Bash command
 
 ## Maven on local machine:
@@ -10,11 +7,11 @@ First assignment
         mvn eclipse:eclipse
 
 > Add to POM.xml:
-<dependency>
-        <groupId>org.apache.hadoop</groupId>
-        <artifactId>hadoop-core</artifactId>
-        <version>1.2.1</version>
-</dependency>
+        <dependency>
+                <groupId>org.apache.hadoop</groupId>
+                <artifactId>hadoop-core</artifactId>
+                <version>1.2.1</version>
+        </dependency>
 
 > Then re-run
         mvn eclipse:eclipse
