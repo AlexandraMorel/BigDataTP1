@@ -44,8 +44,22 @@ Problem when we try to put files of the git on the Github:
         git remote add origin git@github.com:AlexandraMorel/BigDataTP1.git
         git push origin master
 ```
-> We obtain "Permission denied (publickey)."
-> So we copy files from the server and add them to this Github manually.
+We obtain "Permission denied (publickey)." so we create a SSH key to identify our local machine as a trusted computer.
+```
+        ssh-keygen -t rsa -b 4096 -C "amorel@edu.ece.fr"
+        eval $(ssh-agent -s)
+        ssh-add ~/.ssh/id_rsa
+        clip < ~/.ssh/id_rsa.pub
+```
+We create two others branches: one for bankingaccount, the other for friendsmean which contain jar files for each project.
+```
+        git checkout -b bankingaccount
+        git commit -m "add bankingaccount files"
+        git push --set-upstream git@github.com:AlexandraMorel/BigData_TP1.git bankingaccount
+        git checkout -b friendsmean
+        git commit -m "final jar"
+        git push --set-upstream git@github.com:AlexandraMorel/BigData_TP1.git friendsmean
+```
 
 ### II. Practice 1
 Question
