@@ -42,6 +42,11 @@ Then re-run
         kinit
         hadoop jar BankingAccount-1.0-SNAPSHOT.jar org.bigdata.tp1_2.BankAccount /res/mapred_assignment /home/amorel/output
 ```
+When we launch that, we don't have any result. 
+```
+15/11/01 20:25:43 INFO mapreduce.Job:  map 0% reduce 0%
+```
+We can't understand why so we can't provide any result.
 
 Problem when we try to put files of the git on the Github: 
 ```
