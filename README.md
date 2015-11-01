@@ -51,14 +51,16 @@ We obtain "Permission denied (publickey)." so we create a SSH key to identify ou
         ssh-add ~/.ssh/id_rsa
         clip < ~/.ssh/id_rsa.pub
 ```
-We create two others branches: one for bankingaccount, the other for friendsmean which contain jar files for each project.
+We add .jar for each exercises.
 ```
-        git checkout -b bankingaccount
+        git add ./BankingAccount-1.0-SNAPSHOT.jar
         git commit -m "add bankingaccount files"
-        git push --set-upstream git@github.com:AlexandraMorel/BigData_TP1.git bankingaccount
-        git checkout -b friendsmean
-        git commit -m "final jar"
-        git push --set-upstream git@github.com:AlexandraMorel/BigData_TP1.git friendsmean
+        git push --set-upstream git@github.com:AlexandraMorel/BigData_TP1.git master
+        git pull git@github.com:AlexandraMorel/BigData_TP1.git
+        git add ./FriendsMean-1.0-SNAPSHOT.jar
+        git commit -m "add friendsmean files"
+        git push --set-upstream git@github.com:AlexandraMorel/BigData_TP1.git master
+        git pull git@github.com:AlexandraMorel/BigData_TP1.git
 ```
 
 ### II. Practice 1
