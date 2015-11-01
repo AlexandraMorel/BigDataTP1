@@ -33,12 +33,13 @@
         git add AUTHORS
         git commit -m "Add AUTHORS and README.md files"
         git add BankingAccount-1.0-SNAPSHOT.jar
-        git FriendsMean-1.0-SNAPSHOT.jar
+        git add FriendsMean-1.0-SNAPSHOT.jar
         git commit -m "Add .jar"
         kinit
         hadoop jar BankingAccount-1.0-SNAPSHOT.jar org.bigdata.tp1_2.BankAccount /res/mapred_assignment /home/amorel/output
+        
 
-> Problem when we try: 
+> Problem when we try to put files of the git on the Github: 
 ```
         git remote add origin git@github.com:AlexandraMorel/BigDataTP1.git
         git push origin master
