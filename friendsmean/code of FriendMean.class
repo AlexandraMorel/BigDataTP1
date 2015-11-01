@@ -1,0 +1,88 @@
+import java.io.IOException;
+import java.util.StringTokenizer;
+
+import org.apache.hadoop.conf.Configuration;
+import org.apache.hadoop.fs.Path;
+import org.apache.hadoop.io.IntWritable;
+import org.apache.hadoop.io.Text;
+import org.apache.hadoop.mapreduce.Job;
+import org.apache.hadoop.mapreduce.Mapper;
+import org.apache.hadoop.mapreduce.Reducer;
+import org.apache.hadoop.mapreduce.lib.input.FileInputFormat;
+import org.apache.hadoop.mapreduce.lib.output.FileOutputFormat;
+
+public class FriendsMean {
+
+  public static class TokenizerMapper
+       extends Mapper<Object, Text, Text, IntWritable>{
+	//The input for the map is <Text, IntWritable> pair
+    private Text age = new Text();
+    private IntWritable friends = new IntWritable();
+
+    public void map(Object key, Text value, Context context
+                    ) throws IOException, InterruptedException {
+      //we cut the input in tokens and keep the age and the number of friends
+      StringTokenizer itr = new StringTokenizer(value.toString());
+      while (itr.hasMoreTokens()) {
+        itr.nextToken();
+        itr.nextToken();
+        age.set(itr.nextToken());
+        itr.nextToken();
+        friends.set(Integer.parseInt(itr.nextToken()));
+        //we put the age on Integer and then create age brackets, these will be
+        //the key of the pair
+        if ((Integer.parseInt(age.toString()) >= 0) && (Integer.parseInt(age.toString()) <= 5))
+          context.write(new Text("0-5 years"), friends);
+        else if ((Integer.parseInt(age.toString()) >= 6) && (Integer.parseInt(age.toString()) <= 12))
+          context.write(new Text("6-12 years"), friends);
+        else if ((Integer.parseInt(age.toString()) >= 13) && (Integer.parseInt(age.toString()) <= 17))
+          context.write(new Text("13-17 years"), friends);
+        else if ((Integer.parseInt(age.toString()) >= 18) && (Integer.parseInt(age.toString()) <= 25))
+          context.write(new Text("18-25 years"), friends);
+        else if ((Integer.parseInt(age.toString()) >= 26) && (Integer.parseInt(age.toString()) <= 35))
+          context.write(new Text("26-35 years"), friends);
+        else if ((Integer.parseInt(age.toString()) >= 36) && (Integer.parseInt(age.toString()) <= 45))
+          context.write(new Text("36-45 years"), friends);
+        else if ((Integer.parseInt(age.toString()) >= 46) && (Integer.parseInt(age.toString()) <= 60))
+          context.write(new Text("46-60 years"), friends);
+        else
+          context.write(new Text("60+ years"), friends);
+      }
+    }
+  }
+
+  //the output from the reducer is also <Text, IntWritable>
+  public static class IntMeanReducer
+       extends Reducer<Text,IntWritable,Text,IntWritable> {
+    private IntWritable friends_mean = new IntWritable();
+
+    public void reduce(Text key, Iterable<IntWritable> values,
+                       Context context
+                       ) throws IOException, InterruptedException {
+      //we create two integers, we use mean to add all numbers of friends
+      //sum contains the number of people in the age bracket
+      int mean = 0;
+      int sum = 0;
+      for (IntWritable val : values) {
+        mean += val.get();
+        sum++;
+      }
+      mean = mean/sum;
+      friends_mean.set(mean);
+      context.write(key, friends_mean);
+    }
+  }
+
+  public static void main(String[] args) throws Exception {
+    Configuration conf = new Configuration();
+    Job job = Job.getInstance(conf, "friends mean");
+    job.setJarByClass(FriendsMean.class);
+    job.setMapperClass(TokenizerMapper.class);
+    job.setReducerClass(IntMeanReducer.class);
+    job.setOutputKeyClass(Text.class);
+    job.setOutputValueClass(IntWritable.class);
+    FileInputFormat.addInputPath(job, new Path(args[0]));
+    FileOutputFormat.setOutputPath(job, new Path(args[1]));
+    System.exit(job.waitForCompletion(true) ? 0 : 1);
+  }
+}
