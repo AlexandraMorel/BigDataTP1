@@ -6,7 +6,7 @@
         cd ./Users/alexandra/BankingAccount
         mvn eclipse:eclipse
 
-> Add to POM.xml:
+Add to POM.xml:
 ```xml
         <dependency>
                 <groupId>org.apache.hadoop</groupId>
@@ -15,7 +15,7 @@
         </dependency>
 ```
 
-> Then re-run
+Then re-run
         mvn eclipse:eclipse
         mvn jar:jar (create the snapshot we will import on the server)
 
@@ -39,7 +39,7 @@
         hadoop jar BankingAccount-1.0-SNAPSHOT.jar org.bigdata.tp1_2.BankAccount /res/mapred_assignment /home/amorel/output
         
 
-> Problem when we try to put files of the git on the Github: 
+Problem when we try to put files of the git on the Github: 
 ```
         git remote add origin git@github.com:AlexandraMorel/BigDataTP1.git
         git push origin master
@@ -49,4 +49,4 @@
 
 ### II. Practice 1
 Question
-> 
+> It is useful to use the Reducer Class as a Combiner because it's an addition function (it would not be useful for a mean function). It can be used because the function is both commutative and associative.
