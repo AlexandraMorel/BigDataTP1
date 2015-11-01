@@ -7,11 +7,13 @@
         mvn eclipse:eclipse
 
 > Add to POM.xml:
+<table>
         <dependency>
                 <groupId>org.apache.hadoop</groupId>
                 <artifactId>hadoop-core</artifactId>
                 <version>1.2.1</version>
         </dependency>
+</table>
 
 > Then re-run
         mvn eclipse:eclipse
