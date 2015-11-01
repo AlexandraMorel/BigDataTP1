@@ -1,6 +1,8 @@
-# Bash command
+# Crevisier - Morel assignment
 
-## Maven on local machine:
+## Bash command
+
+### Maven on local machine:
 ```
         mvn archetype:generate -DarchetypeArtifactId=maven-archetype-quickstart -DgroupId=org.bigdata.tp1_2 -DartifactId=BankingAccount -DinteractiveMode=false
         cd ./Users/alexandra/BankingAccount
@@ -24,7 +26,7 @@ Then re-run
 
 > Same commands for FriendsMean
 
-## Git Bash:
+### Git Bash:
 ```
         scp ./Users/alexandra/BankingAccount/target/BankingAccount-1.0-SNAPSHOT.jar amorel@haddop-ece.tk:/home/amorel/BigDataTP1 (import the file on the server)
         ssh amorel@hadoop-ece.tk
@@ -78,6 +80,6 @@ We add .jar for each exercises.
         git pull git@github.com:AlexandraMorel/BigData_TP1.git
 ```
 
-### II. Practice 1
+#### II. Practice 1
 Question
 > It is useful to use the Reducer Class as a Combiner because it's an addition function (it would not be useful for a mean function). It can be used because the function is both commutative and associative.
